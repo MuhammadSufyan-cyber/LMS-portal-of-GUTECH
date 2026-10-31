@@ -1,0 +1,31 @@
+{
+  "name": "gutech-internal-lms",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "workspaces": [
+    "Frontend",
+    "Backend"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:web": "npm --workspace Frontend run dev",
+    "dev:api": "npm --workspace Backend run dev",
+    "build": "npm run build --workspace Backend && npm run build --workspace Frontend",
+    "test": "npm run test --workspace Backend && npm run test --workspace Frontend",
+    "lint": "npm run lint --workspace Backend && npm run lint --workspace Frontend",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "db:reset": "npx supabase db reset",
+    "seed:users": "npm run seed:users --workspace Backend",
+    "seed:demo": "npm run seed:demo --workspace Backend",
+    "db:apply-attendance": "npm run db:apply-attendance --workspace Backend",
+    "typecheck": "npm run typecheck --workspace Backend && npm run typecheck --workspace Frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0"
+  }
+}
