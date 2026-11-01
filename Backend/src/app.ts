@@ -1,8 +1,8 @@
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import express from 'express';
-import rateLimit from 'express-rate-limit';
-import helmet from 'helmet';
+import { rateLimit } from "express-rate-limit";
+import helmet from "helmet";
 import { pinoHttp } from 'pino-http';
 import { env } from './config/env.js';
 import { errorHandler } from './middleware/error-handler.js';
